@@ -1,0 +1,10 @@
+FROM python:3.8
+
+WORKDIR /app
+
+COPY proTest.py .
+
+# Install dependencies
+RUN pip install confluent_kafka --no-cache-dir
+
+RUN python proTest.py
