@@ -2,6 +2,7 @@ version: '2'
 
 services:
   kafka1:
+    container_name: kafka1
     image: bitnami/kafka:latest
     ports:
       - "9092:9092"
@@ -17,6 +18,7 @@ services:
       - zookeeper
 
   kafka2:
+    container_name: kafka2
     image: bitnami/kafka:latest
     ports:
       - "9093:9092"
@@ -32,6 +34,7 @@ services:
       - zookeeper
 
   kafka3:
+    container_name: kafka3
     image: bitnami/kafka:latest
     ports:
       - "9094:9092"
@@ -47,6 +50,7 @@ services:
       - zookeeper
 
   zookeeper:
+    container_name: zookeeper
     image: bitnami/zookeeper:latest
     ports:
       - "2181:2181"

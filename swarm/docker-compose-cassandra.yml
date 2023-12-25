@@ -1,6 +1,7 @@
 version: '3'
 services:
   cassandra-node1:
+    container_name: cassandra-node1
     image: cassandra:latest
     ports:
       - "7000:7000"
@@ -12,6 +13,7 @@ services:
       - cassandra-net
 
   cassandra-node2:
+    container_name: cassandra-node2
     image: cassandra:latest
     environment:
       - CASSANDRA_SEEDS=cassandra-node1,cassandra-node2

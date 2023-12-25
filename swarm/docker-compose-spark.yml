@@ -1,6 +1,7 @@
 version: '3'
 services:
   spark-master:
+    container_name: spark-master
     image: bitnami/spark:latest
     ports:
       - "8080:8080"
@@ -11,12 +12,14 @@ services:
       - ./spark_job.jar:/opt/bitnami/spark/jars/spark_job.jar
 
   spark-worker1:
+    container_name: spark-worker1
     image: bitnami/spark:latest
     environment:
       - SPARK_MODE=worker
       - SPARK_MASTER_URL=spark://spark-master:7077
 
   spark-worker2:
+    container_name: spark-worker2
     image: bitnami/spark:latest
     environment:
       - SPARK_MODE=worker
