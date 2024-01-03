@@ -2,9 +2,10 @@ from confluent_kafka import Producer
 from datetime import datetime
 import time
 import csv
-import concurrent.futures
 
-brokers = ["kafka1:9093", "kafka2:9095", "kafka3:9097"]
+# brokers = ["kafka1:9093", "kafka2:9095", "kafka3:9097"]
+
+brokers = ["kafka1:9092", "kafka2:9092"]
 
 producer_conf = {"bootstrap.servers": ",".join(brokers)}
 producer = Producer(producer_conf)
@@ -29,13 +30,11 @@ def send_message(producer, topic, csv_path):
 
             if current_timestamp != timestamp:
                 # Pause for 5 seconds before sending a record in a new group
-                time.sleep(5)
+                time.sleep(1)
                 current_timestamp = timestamp
             # Send the record to Kafka
             producer.produce(topic, key=str(timestamp), value=str(row), callback=delivery_report)
             producer.flush()
-
-    
 
 if __name__ == '__main__':
     try:
