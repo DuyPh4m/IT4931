@@ -1,0 +1,2 @@
+sudo docker exec -it spark-master /bin/sh -c \
+"spark-submit --master spark://spark-master:7077 --deploy-mode client --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2,com.datastax.spark:spark-cassandra-connector_2.12:3.1.0 /app/sparkJob.py"
