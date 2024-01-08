@@ -1,0 +1,2 @@
+  cluster.name: "docker-cluster"
+  cluster.routing.allocation.disk.threshold_enabled: false
