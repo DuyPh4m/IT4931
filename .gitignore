@@ -1,1 +1,6 @@
 *test*
+/logstash
+/hadoop
+/elasticsearch
+/swarm
+.vscode

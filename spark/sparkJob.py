@@ -3,7 +3,7 @@ from pyspark.sql.functions import split
 from pyspark.sql.functions import col,when
 
 import os
-os.environ['PYSPARK_SUBMIT_ARGS'] = '--packages org.apache.spark:spark-streaming-kafka-0-10_2.12:3.2.0,org.apache.spark:spark-sql-kafka-0-10_2.12:3.2.0,com.datastax.spark:spark-cassandra-connector_2.12:3.1.0 pyspark-shell'
+os.environ['PYSPARK_SUBMIT_ARGS'] = '--packages org.apache.spark:spark-streaming-kafka-0-10_2.12:3.2.0,org.apache.spark:spark-sql-kafka-0-10_2.12:3.2.0,com.datastax.spark:spark-cassandra-connector_2.12:3.1.0,org.elasticsearch:elasticsearch-hadoop:7.15.2 pyspark-shell'
 
 spark = (
     SparkSession.builder
@@ -80,6 +80,7 @@ es_query = (
     .option("es.port", "9200")
     .option("es.resource", "matchresults/epl1")
     .option("checkpointLocation", "/tmp")
+    .option("es.write.operation", "upsert")
     .start()
 )
 # Start streaming
