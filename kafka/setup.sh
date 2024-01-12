@@ -6,3 +6,11 @@ sudo docker exec -it kafka /bin/sh -c \
 # "cd /opt/bitnami/kafka/bin && kafka-topics.sh --create zookeeper:2181 --replication-factor 1 --partitions 1 --topic EPL"
 # sudo docker exec -it kafka /bin/sh -c \
 # "cd /opt/bitnami/kafka/bin && kafka-topics.sh --list zookeeper:2181"
+
+if [ $? -eq 0 ]
+then
+  echo "Kafka setup successfully."
+else
+  echo "Kafka setup failed."
+  exit 1
+fi

@@ -26,7 +26,8 @@ def send_message(producer, topic, csv_path):
 
             # Send the record to Kafka
             producer.produce(topic, key=key, value=value, callback=delivery_report)
-            producer.flush()
+            producer.flush()        
+    print('Finished sending all messages!')    
 
 if __name__ == '__main__':
     try:
